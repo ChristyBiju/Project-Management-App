@@ -6,6 +6,8 @@ export default function SelectedProject({ project, onDelete, onAddTask, onDelete
     month: "short",
     day: "numeric",
   });
+  
+  const projectTasks = tasks.filter((task) => task.projectId === project.id);
 
   return (
     <div className="w-[35rem] mt-16">
@@ -21,7 +23,7 @@ export default function SelectedProject({ project, onDelete, onAddTask, onDelete
         <p className="mb-4 text-stone-400">{formattedDate}</p>
         <p className="text-stone-600 whitespace-pre-wrap">{project.description}</p>
       </header>
-      <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks} />
+      <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={projectTasks} />
     </div>
   );
 }
